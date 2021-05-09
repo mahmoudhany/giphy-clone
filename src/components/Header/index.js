@@ -22,7 +22,6 @@ export default function Header(props) {
       onSearchClicked()
     }
   }
-
   return (
     <div className='header'>
       <nav>
