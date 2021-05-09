@@ -11,6 +11,9 @@ class Gif extends React.Component {
   componentDidMount() {
     this.imageRef.current.addEventListener('load', () => this.setSpans());
   }
+  componentWillUnmount() {
+    this.imageRef.current.removeEventListener('load', () => this.setSpans());
+  }
   setSpans = () => {
     const height = this.imageRef.current?.clientHeight;
     const spans = Math.floor(height / 10);
