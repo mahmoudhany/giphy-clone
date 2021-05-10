@@ -7,16 +7,21 @@ export default function Header(props) {
   const [searchValue, setSearchValue] = useState('')
   const history = useHistory()
 
+  // listen to search input change
   const onChange = (e) => {
     e.preventDefault()
     setSearchValue(e.target.value.trim())
   }
+
+  // listen to submitting search value
   const onSearchClicked = () => {
+    // simple check for input value
     if (searchValue) {
       setSearchValue('')
       history.push(`/search/${searchValue}`)
     }
   }
+  // {accessability feature } using keyboard to trigger search
   const handleEnterKeyDown = (e) => {
     if (e.key === 'Enter') {
       onSearchClicked()
@@ -24,12 +29,15 @@ export default function Header(props) {
   }
   return (
     <div className='header'>
-      <nav>
-        <Link to='/' className='container logo d-block'>
-          <img
-            src="https://upload.wikimedia.org/wikipedia/commons/8/82/Giphy-logo.svg" alt="Fatura-gifs"
-          />
-        </Link>
+      <nav
+        className='navbar navbar-light bg-light'>
+        <div className="container">
+          <Link to='/' className='navbar-brand logo'>
+            <img
+              src="https://upload.wikimedia.org/wikipedia/commons/8/82/Giphy-logo.svg" alt="Fatura-gifs"
+            />
+          </Link>
+        </div>
       </nav>
       <div className="content">
         <div className="input-wrapper">

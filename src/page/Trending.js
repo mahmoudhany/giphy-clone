@@ -1,22 +1,62 @@
-import React, { useEffect, useState } from 'react'
+import React, { useCallback, useEffect, useState } from 'react'
 import GifsWrapper from '../components/GifsWrapper'
+import { fetchGifsAction } from '../API/api';
 
-export default function Trending() {
-  // const [mounted, setMounted] = useState(true);
-  // useEffect(() => {
-  //   setMounted(false)
-  //   return () => {
-  //     setMounted(true)
-  //   }
-  // }, [])
+const Trending = () => {
+  const [trending, setTrending] = useState({
+    data: [],
+    count: 0,
+    loading: false,
+    limit: 5,
+    offset: 0,
+  });
+  // fetch gifs
+  const fetchData = useCallback(async () => {
+    // setting initial state
+    setTrending(prev => ({ ...prev, loading: true }));
+
+    // get response data
+    const { success, data, count, message } = await fetchGifsAction({
+      offset: trending.offset,
+      endpoint: 'trending',
+      limit: trending.limit
+    });
+    // setting new state 
+    if (success) {
+      setTrending(prev => ({
+        ...prev,
+        data: [...prev.data, ...data],
+        count,
+        loading: false
+      }))
+    }
+    // handle error message 
+    if (!success) {
+      alert(message)
+      setTrending(prev => ({ ...prev, loading: false }))
+    };
+  }, [trending.offset])
+
+  useEffect(() => {
+    fetchData();
+  }, [fetchData]);
+
   return (
-    // mounted &&
     <>
-      <GifsWrapper
-        endpoint='trending'
+      {/* render gifs list component */}
+      {trending.data && <GifsWrapper
         title='Trending'
-        limit={10}
-      />
+        count={trending.count}
+        isLoading={trending.loading}
+        // change offset to allow infinite scrolling
+        changeOffset={() => setTrending(prev => ({
+          ...prev,
+          offset: trending.limit + trending.offset
+        }))}
+        data={trending.data}
+      />}
     </>
   )
-}
+};
+
+export default Trending;
