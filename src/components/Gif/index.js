@@ -27,26 +27,27 @@ class Gif extends React.Component {
     return "rgb(" + x + "," + y + "," + z + ")";
   }
   render() {
-    const { imageUrl, title, height } = this.props;
+    const { imageUrl, title, height, id } = this.props;
     const { isLoading, spans } = this.state
     return (
-      <Link
+      <div
         className='img-wrapper rounded'
-        to='/hi'
         style={{
           gridRowEnd: `span ${spans}`,
           background: isLoading ? this.randomBg() : 'transparent',
           minHeight: `${isLoading ? height : this.state.height}px`
         }}
       >
-        <img
-          className='rounded'
-          src={imageUrl}
-          alt={title}
-          ref={this.imageRef}
-          loading='lazy'
-        />
-      </Link>
+        <Link to={`/gifs/${id}`}>
+          <img
+            className='rounded'
+            src={imageUrl}
+            alt={title}
+            ref={this.imageRef}
+            loading='lazy'
+          />
+        </Link>
+      </div >
     );
   }
 }

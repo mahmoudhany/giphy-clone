@@ -30,6 +30,7 @@ const GifsWrapper = ({ data, isLoading, changeOffset, title }) => {
           data.map(({ id, title, images: { downsized_large } }) => {
             return <Gif
               key={id}
+              id={id}
               imageUrl={downsized_large.url}
               title={title}
               height={downsized_large.height}

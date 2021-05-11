@@ -1,0 +1,150 @@
+.single-gif {
+	position: absolute;
+	top: -80px;
+	padding: 20px 20px 50px 20px;
+	right: 10px;
+	left: 10px;
+	background-color: #fff;
+	-webkit-box-shadow: 0px 5px 16px -2px rgba(0, 0, 0, 0.2);
+	-moz-box-shadow: 0px 5px 16px -2px rgba(0, 0, 0, 0.2);
+	box-shadow: 0px 5px 16px -2px rgba(0, 0, 0, 0.2);
+	border-radius: 5px;
+	z-index: 10;
+	.row {
+		display: flex;
+		justify-content: space-between;
+	}
+}
+.left,
+.middle,
+.right {
+	display: flex;
+	flex-direction: column;
+}
+.left,
+.middle {
+	@media (max-width: 768px) {
+		border-bottom: 1px solid rgb(218, 216, 216);
+	}
+}
+.left,
+.right {
+	@media (max-width: 768px) {
+		margin-top: 20px;
+	}
+}
+
+.left {
+	display: flex;
+	.user {
+		display: flex;
+		.name {
+			margin-left: 10px;
+			display: flex;
+			flex-direction: column;
+			justify-content: space-evenly;
+			.display-name {
+				font-weight: 700;
+				font-size: 1rem;
+			}
+		}
+		img {
+			width: 50px;
+			height: 50px;
+		}
+	}
+	.description {
+		margin: 40px 0;
+		p {
+			font-weight: 300;
+			font-size: 0.875rem;
+			line-height: 1.5;
+		}
+	}
+	.follow {
+		font-weight: 600;
+		font-size: 0.875rem;
+		margin-bottom: 20px;
+
+		a {
+			display: block;
+			width: 30px;
+			height: 30px;
+			img {
+				width: 100%;
+			}
+		}
+	}
+	.ananymous {
+		@media (max-width: 768px) {
+			margin-bottom: 20px;
+		}
+	}
+}
+.middle {
+	display: flex;
+	.title {
+		font-size: 0.875rem;
+		font-weight: 500;
+		margin-bottom: 10px;
+		line-height: 1.5;
+	}
+	.gif {
+		margin-bottom: 20px;
+		img {
+			width: 100%;
+		}
+	}
+	@media (max-width: 992px) {
+		order: -1;
+	}
+}
+
+.right {
+	display: flex;
+	align-items: flex-start;
+	font-size: 0.875rem;
+	font-weight: 500;
+	span {
+		font-weight: 300;
+	}
+	.favorite {
+		margin-top: 30px;
+
+		button {
+			border: 0;
+			padding: 0;
+			display: flex;
+			align-items: center;
+			background: transparent;
+			span {
+				font-weight: 500;
+				font-size: 0.875rem;
+			}
+			i {
+				margin-right: 6px;
+				transition: all ease-in-out 0.3s;
+			}
+			.faved {
+				color: red;
+				&:hover {
+					transform: scale(1.2);
+					color: black;
+				}
+			}
+			.not-faved {
+				color: black;
+				&:hover {
+					transform: scale(1.2);
+					color: red;
+				}
+			}
+		}
+		@media (max-width: 992px) {
+			margin-top: 0;
+		}
+	}
+	.date {
+		margin: 40px 0;
+	}
+}
