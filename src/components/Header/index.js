@@ -1,12 +1,13 @@
 import React, { useState } from 'react'
-import { useHistory } from 'react-router'
+import { useHistory, useLocation } from 'react-router'
 import { Link } from 'react-router-dom'
 import './header.scss'
 
-export default function Header(props) {
+export default function Header() {
   const [searchValue, setSearchValue] = useState('')
   const history = useHistory()
-
+  const location = useLocation()
+  let singleGifCheck = (location.pathname !== '/') && (location.pathname !== `/search/${searchValue}`) && (location.pathname !== '/favorites')
   // listen to search input change
   const onChange = (e) => {
     e.preventDefault()
@@ -16,10 +17,7 @@ export default function Header(props) {
   // listen to submitting search value
   const onSearchClicked = () => {
     // simple check for input value
-    if (searchValue) {
-      setSearchValue('')
-      history.push(`/search/${searchValue}`)
-    }
+    if (searchValue) history.push(`/search/${searchValue}`)
   }
   // {accessability feature } using keyboard to trigger search
   const handleEnterKeyDown = (e) => {
@@ -28,15 +26,24 @@ export default function Header(props) {
     }
   }
   return (
-    <div className='header'>
+    <div className='header'
+      style={{
+        minHeight: singleGifCheck ?
+          '300px' :
+          '350px'
+      }}>
       <nav
-        className='navbar navbar-light bg-light'>
+        className='navbar navbar-light bg-light' >
         <div className="container">
           <Link to='/' className='navbar-brand logo'>
             <img
               src="https://upload.wikimedia.org/wikipedia/commons/8/82/Giphy-logo.svg" alt="Fatura-gifs"
             />
           </Link>
+          <Link to='/favorites' className='navbar-brand'>
+            Favorites
+          </Link>
+
         </div>
       </nav>
       <div className="content">
@@ -55,6 +62,6 @@ export default function Header(props) {
           >Search</button>
         </div>
       </div>
-    </div >
+    </div>
   )
 }

@@ -46,7 +46,6 @@ const Trending = () => {
       {/* render gifs list component */}
       {trending.data && <GifsWrapper
         title='Trending'
-        count={trending.count}
         isLoading={trending.loading}
         // change offset to allow infinite scrolling
         changeOffset={() => setTrending(prev => ({

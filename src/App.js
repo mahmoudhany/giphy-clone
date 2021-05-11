@@ -1,7 +1,9 @@
 import { Switch, Route } from "react-router-dom";
 import Header from './components/Header';
-import Search from "./page/Search";
-import Trending from './page/Trending';
+import SingleGif from "./components/SingleGif";
+import Favorites from "./pages/Favorites";
+import Search from "./pages/Search";
+import Trending from './pages/Trending';
 import './styles/style.scss'
 
 function App() {
@@ -10,7 +12,9 @@ function App() {
       <Header />
       <Switch>
         <Route path='/' exact component={Trending} />
+        <Route path='/favorites' exact component={Favorites} />
         <Route path='/search/:q' exact component={Search} />
+        <Route path='/gifs/:id' exact component={SingleGif} />
         <Route>
           <h4
             className='text-center'

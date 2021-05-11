@@ -5,7 +5,6 @@ import GifsWrapper from '../components/GifsWrapper'
 const Search = (props) => {
   const [state, setState] = useState({
     data: [],
-    count: 0,
     loading: false,
     limit: 5,
     offset: 0,
@@ -17,7 +16,7 @@ const Search = (props) => {
     // setting initial state
     setState(prev => ({ ...prev, loading: true }))
     // get response data
-    const { success, data, count, message } = await fetchGifsAction({
+    const { success, data, message } = await fetchGifsAction({
       offset: state.offset,
       endpoint: 'search',
       keyword: props.match.params.q !== state.keyword ? props.match.params.q : state.keyword,
@@ -30,7 +29,6 @@ const Search = (props) => {
         ...prev,
         data: props.match.params.q !== state.keyword ? data :
           [...state.data, ...data],
-        count,
         loading: false,
         keyword: props.match.params.q !== state.keyword ?
           props.match.params.q : state.keyword

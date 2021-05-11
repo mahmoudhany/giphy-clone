@@ -3,3 +3,9 @@
 body {
 	font-family: "Mukta", sans-serif;
 }
+
+.app {
+	display: flex;
+	justify-content: center;
+	flex-direction: column;
+}
