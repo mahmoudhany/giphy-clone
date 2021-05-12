@@ -18,3 +18,15 @@ installs the necessary node_modules
 
 Runs the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+
+# Features Done:
+
+- When the user scrolls the page to the bottom, load new GIFs automatically.
+
+- Create a mosaic layout and display a placeholder when GIFs are still loading.
+
+- Let the user favorite GIFs and list their favorites. The users should be able to retrieve their favorite GIFs even after refreshing the page.
+
+- Let the user favorite GIFs and list their favorites. The users should be able to retrieve their favorite GIFs even after refreshing the page.
+
+## This inspired by giphy.com
