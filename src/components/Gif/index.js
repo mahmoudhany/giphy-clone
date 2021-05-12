@@ -44,7 +44,6 @@ class Gif extends React.Component {
           marginBottom: '5px'
         }}
       >
-        {console.log(this.imageRef.current?.clientHeight, gif.title)}
         <div className="add-to-fav">
           <FavouriteBtn gif={gif} />
         </div>

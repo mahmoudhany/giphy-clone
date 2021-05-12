@@ -1,31 +1,29 @@
 import { useEffect, useState } from 'react'
-import { addToFavourites, checkFavourite, removeFromFavourites } from '../../utilities'
+import { addToFavourites, isExist, removeFromFavourites } from '../../utilities'
 import './favouriteBtn.scss'
 
 export default function FavouriteBtn({ gif }) {
-
-  const [inFavourites, setInFavourites] = useState(false)
+  const [exist, setExist] = useState(false)
   const onFavouriteBtnClicked = () => {
-    if (inFavourites) {
-      // remove from favourites
+    // remove from favourites
+    if (exist) {
       removeFromFavourites(gif.id)
-      setInFavourites(false)
-    } else {
-      // add to favourites
-      addToFavourites(gif)
-      setInFavourites(true)
+      return setExist(false)
     }
+    // add to favourites
+    addToFavourites(gif)
+    setExist(true)
   }
 
   // check if item is in favourites
   useEffect(() => {
-    setInFavourites(checkFavourite(gif.id))
-  }, [gif.id, inFavourites])
+    setExist(isExist(gif.id))
+  }, [gif.id, exist])
 
   return (
     <div className='favouriteBtn'>
       <button onClick={onFavouriteBtnClicked}>
-        <i className={`fas fa-heart ${inFavourites ? 'faved' : 'not-faved'}`}
+        <i className={`fas fa-heart ${exist ? 'faved' : 'not-faved'}`}
         ></i>
       </button>
     </div>

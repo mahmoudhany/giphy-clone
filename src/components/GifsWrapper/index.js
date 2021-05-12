@@ -3,6 +3,7 @@ import Gif from '../Gif';
 import Loading from '../Loading';
 import './gifWrapper.scss'
 
+
 const GifsWrapper = ({ data, isLoading, changeOffset, title }) => {
 
   const renderList = () => {
