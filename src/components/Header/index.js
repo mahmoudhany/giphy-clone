@@ -19,7 +19,7 @@ export default function Header() {
   // listen to submitting search value
   const onSearchClicked = () => {
     // simple check for input value
-    if (searchValue !== '') history.push(`/search/${searchValue}`)
+    if (searchValue !== '' && searchValue.trim()) history.push(`/search/${searchValue}`)
   }
   // {accessability feature } using keyboard to trigger search
   const handleEnterKeyDown = (e) => {
