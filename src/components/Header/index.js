@@ -12,7 +12,6 @@ export default function Header() {
   let singleGifCheck = (location.pathname !== '/') && (location.pathname !== `/search/${searchValue}`) && (location.pathname !== '/favourites')
   // listen to search input change
   const onChange = (e) => {
-    const value = e.target.value;
     e.preventDefault()
     setSearchValue(e.target.value)
   }
