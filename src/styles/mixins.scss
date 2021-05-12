@@ -1,0 +1,16 @@
+@mixin favoriteIconColor($color) {
+	.faved {
+		color: #e61409;
+		&:hover {
+			transform: scale(1.2);
+			color: $color;
+		}
+	}
+	.not-faved {
+		color: $color;
+		&:hover {
+			transform: scale(1.2);
+			color: #e61409;
+		}
+	}
+}

@@ -1,0 +1,23 @@
+@import "../../styles/mixins.scss";
+
+.favouriteBtn {
+	z-index: 10;
+	button {
+		padding: 0;
+		border: 0;
+		display: flex;
+		align-items: center;
+		background: transparent;
+		cursor: pointer;
+		span {
+			font-weight: 500;
+			font-size: 0.875rem;
+		}
+		i {
+			text-shadow: 1px 3px 6px rgba(0, 0, 0, 0.47);
+			transition: all ease-in-out 0.3s;
+		}
+
+		@include favoriteIconColor(white);
+	}
+}

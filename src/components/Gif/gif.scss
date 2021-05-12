@@ -1,0 +1,20 @@
+.img-wrapper {
+	a {
+		position: relative;
+		display: block;
+	}
+	&:hover {
+		cursor: pointer;
+	}
+	img {
+		object-fit: cover;
+		width: 100%;
+	}
+
+	.add-to-fav {
+		position: absolute;
+		top: 10px;
+		right: 10px;
+		z-index: 10;
+	}
+}

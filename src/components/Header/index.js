@@ -7,7 +7,9 @@ export default function Header() {
   const [searchValue, setSearchValue] = useState('')
   const history = useHistory()
   const location = useLocation()
-  let singleGifCheck = (location.pathname !== '/') && (location.pathname !== `/search/${searchValue}`) && (location.pathname !== '/favorites')
+
+  // get location to change height
+  let singleGifCheck = (location.pathname !== '/') && (location.pathname !== `/search/${searchValue}`) && (location.pathname !== '/favourites')
   // listen to search input change
   const onChange = (e) => {
     e.preventDefault()
@@ -27,6 +29,7 @@ export default function Header() {
   }
   return (
     <div className='header'
+      // change height depending on page
       style={{
         minHeight: singleGifCheck ?
           '300px' :
@@ -40,12 +43,13 @@ export default function Header() {
               src="https://upload.wikimedia.org/wikipedia/commons/8/82/Giphy-logo.svg" alt="Fatura-gifs"
             />
           </Link>
-          <Link to='/favorites' className='navbar-brand'>
-            Favorites
+          <Link to='/favourites' className='navbar-brand'>
+            Favourites
           </Link>
-
         </div>
       </nav>
+
+      {/* content */}
       <div className="content">
         <div className="input-wrapper">
           <input
