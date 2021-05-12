@@ -1,6 +1,7 @@
 import React, { useCallback, useEffect, useState } from 'react'
 import { fetchGifsAction } from '../API/api';
 import GifsWrapper from '../components/GifsWrapper'
+import { getUniqueGifs } from '../utilities/array';
 
 const Search = (props) => {
   const [state, setState] = useState({
@@ -28,7 +29,7 @@ const Search = (props) => {
       setState(prev => ({
         ...prev,
         data: props.match.params.q !== state.keyword ? data :
-          [...state.data, ...data],
+          getUniqueGifs([...state.data, ...data]),
         loading: false,
         keyword: props.match.params.q !== state.keyword ?
           props.match.params.q : state.keyword

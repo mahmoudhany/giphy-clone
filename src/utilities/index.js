@@ -1,31 +1,17 @@
 export const STORAGE_KEY = 'favourites'
 
 export const addToFavourites = (gif) => {
-  let favourites = []
-  let localFavs = JSON.parse(localStorage.getItem(STORAGE_KEY))
-  favourites.push(gif)
-
-  if (localFavs && localFavs.length > 0) {
-    if (checkFavourite(gif.id) !== true) {
-      localStorage.setItem(STORAGE_KEY, JSON.stringify([...localFavs, ...favourites]))
-    }
-  } else {
-    localStorage.setItem(STORAGE_KEY, JSON.stringify([...favourites]))
-  }
+  const favourites = JSON.parse(localStorage.getItem(STORAGE_KEY)) || [];
+  localStorage.setItem(STORAGE_KEY, JSON.stringify([...favourites, gif]))
 }
 
-export const checkFavourite = (id) => {
-  let localFavs = JSON.parse(localStorage.getItem(STORAGE_KEY))
-  if (localFavs) {
-    let inFavs = localFavs.filter(obj => obj['id'] === id).length > 0
-    return inFavs
-  }
+export const isExist = (id) => {
+  let favourites = JSON.parse(localStorage.getItem(STORAGE_KEY))
+  return favourites.filter(({ id: gId }) => gId === id).length > 0
 }
 
 export const removeFromFavourites = (id) => {
-  let localFavs = JSON.parse(localStorage.getItem(STORAGE_KEY))
-  if (localFavs) {
-    let newFavs = localFavs.filter(obj => obj['id'] !== id)
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(newFavs))
-  }
+  let favourites = JSON.parse(localStorage.getItem(STORAGE_KEY))
+  const favs = favourites.filter(({ id: gId }) => gId !== id);
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(favs))
 }

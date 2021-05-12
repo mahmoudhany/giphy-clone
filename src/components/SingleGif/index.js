@@ -3,7 +3,6 @@ import { fetchSingleGif } from '../../API/api';
 import Loading from '../Loading'
 import instgramLogo from '../../assets/instagram.png'
 import './singleGif.scss'
-// import { addToFavourites, checkFavourite, removeFromFavourites } from '../../utilities';
 import FavouriteBtn from '../FavouriteBtn';
 
 const SingleGif = (props) => {

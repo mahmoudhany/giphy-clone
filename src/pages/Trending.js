@@ -1,6 +1,7 @@
 import React, { useCallback, useEffect, useState } from 'react'
 import GifsWrapper from '../components/GifsWrapper'
 import { fetchGifsAction } from '../API/api';
+import { getUniqueGifs } from '../utilities/array';
 
 const Trending = () => {
   const [trending, setTrending] = useState({
@@ -25,7 +26,7 @@ const Trending = () => {
     if (success) {
       setTrending(prev => ({
         ...prev,
-        data: [...prev.data, ...data],
+        data: getUniqueGifs([...prev.data, ...data]),
         count,
         loading: false
       }))
