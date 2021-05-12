@@ -4,7 +4,7 @@ const API_KEY = process.env.REACT_APP_API_KEY;
 export const fetchGifsAction = async ({ limit = 5, offset, keyword, endpoint }) => {
 
   try {
-    const url = `/${endpoint}?api_key=${API_KEY}${keyword ? ('&q=' + keyword) : ''}&limit=${limit}&offset=${offset}`;
+    const url = `/${endpoint}?api_key=${API_KEY}${keyword ? ('&q=' + keyword) : ''}&limit=${limit}&offset=${offset}&rating=g`;
     const response = await Axios.get(`${url}`);
     return {
       success: true,

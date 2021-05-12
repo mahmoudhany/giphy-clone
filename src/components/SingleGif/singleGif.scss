@@ -1,3 +1,5 @@
+@import "../../styles/mixins.scss";
+
 .single-gif {
 	position: absolute;
 	top: -80px;
@@ -108,37 +110,20 @@
 	span {
 		font-weight: 300;
 	}
-	.favorite {
+	.favourite {
 		margin-top: 30px;
 
-		button {
-			border: 0;
-			padding: 0;
+		.favWrap {
 			display: flex;
 			align-items: center;
 			background: transparent;
 			span {
 				font-weight: 500;
 				font-size: 0.875rem;
+				margin-left: 6px;
 			}
-			i {
-				margin-right: 6px;
-				transition: all ease-in-out 0.3s;
-			}
-			.faved {
-				color: red;
-				&:hover {
-					transform: scale(1.2);
-					color: black;
-				}
-			}
-			.not-faved {
-				color: black;
-				&:hover {
-					transform: scale(1.2);
-					color: red;
-				}
-			}
+
+			@include favoriteIconColor(black);
 		}
 		@media (max-width: 992px) {
 			margin-top: 0;

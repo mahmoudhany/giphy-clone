@@ -27,16 +27,16 @@ const GifsWrapper = ({ data, isLoading, changeOffset, title }) => {
       >
         {
           // render single gif component
-          data.map(({ id, title, images: { downsized_large } }) => {
+          data.map((gif) => {
             return <Gif
-              key={id}
-              id={id}
-              imageUrl={downsized_large.url}
+              key={gif.id}
+              id={gif.id}
+              imageUrl={gif.images?.downsized_medium?.url}
               title={title}
-              height={downsized_large.height}
+              height={gif.images?.downsized_medium?.height}
+              gif={gif}
             />
-          }
-          )
+          })
         }
       </InfiniteScroll >
     )
@@ -48,7 +48,10 @@ const GifsWrapper = ({ data, isLoading, changeOffset, title }) => {
         {
           data.length > 0 ?
             renderList() :
-            <p className='text-center'> No GIFs found for: {title}</p>
+            (!isLoading ?
+              <p className='text-center'> No GIFs found for: {title}</p> :
+              <Loading />
+            )
         }
       </div>
     </div >
