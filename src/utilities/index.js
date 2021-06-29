@@ -7,7 +7,8 @@ export const addToFavourites = (gif) => {
 
 export const isExist = (id) => {
   let favourites = JSON.parse(localStorage.getItem(STORAGE_KEY))
-  return favourites.filter(({ id: gId }) => gId === id).length > 0
+
+  return favourites && favourites.filter(({ id: gId }) => gId === id).length > 0
 }
 
 export const removeFromFavourites = (id) => {
